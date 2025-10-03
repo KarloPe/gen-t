@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Sistema de Calificaciones       v11</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <div class="login-container">
+        <div class="login-form" id="main-content">
+            <!-- Formulario de Login -->
+            <div id="loginForm">
+                <h2>Iniciar Sesión  v11</h2>
+                <form action="validar.php" method="POST">
+                    <div class="form-group">
+                        <label for="usuario">ID Usuario:</label>
+                        <input type="text" id="usuario" name="usuario" required autocomplete="username" aria-describedby="usuario-help">
+                        <small id="usuario-help">Ingrese su ID de usuario (números) o 'admin'</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="clave">Contraseña:</label>
+                        <input type="password" id="clave" name="clave" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn-login">Ingresar</button>
+                </form>
+                
+                <div class="registro-option">
+                    <p>¿Eres un nuevo alumno?</p>
+                    <button type="button" class="btn-secondary" onclick="mostrarRegistro()">Registrarse</button>
+                </div>
+            </div>
+
+            <!-- Formulario de Registro -->
+            <div id="registroForm" style="display: none;">
+                <h2>Registro de Alumno</h2>
+                <form action="registrar_alumno.php" method="POST">
+                    <div class="form-group">
+                        <label for="dni_registro">DNI:</label>
+                        <input type="text" id="dni_registro" name="dni" required pattern="[0-9]+" title="Solo números">
+                        <small>Ingrese solo números</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido_registro">Apellido:</label>
+                        <input type="text" id="apellido_registro" name="apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre_registro">Nombre:</label>
+                        <input type="text" id="nombre_registro" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="email_registro">Email:</label>
+                        <input type="email" id="email_registro" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono_registro">Teléfono:</label>
+                        <input type="text" id="telefono_registro" name="telefono" required pattern="[0-9]+" title="Solo números">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_nacimiento_registro">Fecha de Nacimiento:</label>
+                        <input type="date" id="fecha_nacimiento_registro" name="fecha_nacimiento">
+                        <small>Formato: día/mes/año</small>
+                    </div>
+                    <button type="submit" class="btn-login">Registrarse</button>
+                    <button type="button" class="btn-secondary" onclick="mostrarLogin()">Volver al Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        function mostrarRegistro() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registroForm').style.display = 'block';
+        }
+        
+        function mostrarLogin() {
+            document.getElementById('registroForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
